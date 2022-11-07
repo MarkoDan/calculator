@@ -12,15 +12,18 @@ msg_5 = "Do you want to continue calculations? (y / n):"
 
 operators = ['+', '-', '*', '/']
 
+memory = 0
 while True:
-    memory = 0
-    m = memory
     print(msg_0)
     calc = input()
     x, oper, y = calc.split(' ')
-    if x.isalpha() or y.isalpha():
-        print(msg_1)
-    elif oper not in operators:
+    if x == 'M':
+        x = memory
+    elif y == 'M':
+        y = memory
+    # elif y != 'M' or x != 'M' and x.isalpha() or y.isalpha():
+    #     print(msg_1)
+    if oper not in operators:
         print(msg_2)
     else:
         x = float(x)
@@ -34,19 +37,21 @@ while True:
             result = x * y
         elif oper == '/' and y != 0:
             result = x / y
-        
-        if y == 0: 
+
+        if oper == '/' and float(y) == 0.0 or y == 0:
             print(msg_3)
         else:
             print(result)
             choise = input(msg_4)
             if choise == 'y':
                 memory = memory + result
+            else:
+                print(result)
+
             continue_or_not = input(msg_5)
             if continue_or_not == 'y':
                 continue
             else:
-                print(m)
                 break
             
 
