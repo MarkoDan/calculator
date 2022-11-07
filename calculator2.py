@@ -69,15 +69,17 @@ while True:
         if input(msg_4) == "y":
             if is_one_digit(result):
                 msg_index = 10
-                print(msg_[msg_index])
-                answer = input()
-                if answer == "y":
-                    if msg_index < 12:
-                        msg_index = msg_index + 1
-                    else:
-                        memory = result
-                elif answer == "n":
-                    memory = result
+                while msg_index <= 12:
+                    print(msg_[msg_index])
+                    answer = input()
+                    if answer == "y":
+                        if msg_index < 12:
+                            msg_index = msg_index + 1
+                        else:
+                            memory = result
+                            break
+                    elif answer == "n":
+                        break 
             else:
                 memory = result
         if input(msg_5) == "n":
